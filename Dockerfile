@@ -86,6 +86,7 @@ RUN \
  echo "**** install packages ****" && \
  apt-get install -y \
 	curl \
+	rsync \
 	tzdata && \
  echo "**** generate locale ****" && \
  locale-gen en_US.UTF-8 && \
@@ -96,7 +97,7 @@ RUN \
 	"https://github.com/just-containers/s6-overlay/releases/download/${OVERLAY_VERSION}/s6-overlay-${OVERLAY_ARCH}.tar.gz" && \
  tar xfz \
 	/tmp/s6-overlay.tar.gz -C /tmp/s6-overlay && \
- cp -vnpru /tmp/s6-overlay/* / && \
+ rsync -K -a /tmp/s6-overlay/ / && \
  echo "**** create abc user and make our folders ****" && \
  useradd -u 911 -U -d /config -s /bin/false abc && \
  usermod -G users abc && \
