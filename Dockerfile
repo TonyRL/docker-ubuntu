@@ -78,6 +78,8 @@ RUN \
 	> /run/systemd/container && \
  echo "**** install apt-utils and locales ****" && \
  apt-get update && \
+ apt list --upgradable && \
+ apt-get upgrade -y && \
  apt-get install -y \
 	apt-utils \
 	locales && \
@@ -94,7 +96,7 @@ RUN \
 	"https://github.com/just-containers/s6-overlay/releases/download/${OVERLAY_VERSION}/s6-overlay-${OVERLAY_ARCH}.tar.gz" && \
  tar xfz \
 	/tmp/s6-overlay.tar.gz -C /tmp/s6-overlay && \
- mv -n /tmp/s6-overlay / && \
+ mv -n /tmp/s6-overlay/* / && \
  echo "**** create abc user and make our folders ****" && \
  useradd -u 911 -U -d /config -s /bin/false abc && \
  usermod -G users abc && \
