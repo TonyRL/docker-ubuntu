@@ -46,7 +46,7 @@ COPY sources.list /etc/apt/
 RUN \
  echo "**** Ripped from Ubuntu Docker Logic ****" && \
  set -xe && \
- echo '#!/bin/sh' \
+ echo '#!/bin/bash' \
 	> /usr/sbin/policy-rc.d && \
  echo 'exit 101' \
 	>> /usr/sbin/policy-rc.d && \
@@ -84,7 +84,6 @@ RUN \
  echo "**** install packages ****" && \
  apt-get install -y \
 	curl \
-	dash \
 	tzdata && \
  echo "**** generate locale ****" && \
  locale-gen en_US.UTF-8 && \
