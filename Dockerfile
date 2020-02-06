@@ -84,6 +84,7 @@ RUN \
  echo "**** install packages ****" && \
  apt-get install -y \
 	curl \
+	dash \
 	tzdata && \
  echo "**** generate locale ****" && \
  locale-gen en_US.UTF-8 && \
