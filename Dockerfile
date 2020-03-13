@@ -14,4 +14,6 @@ RUN \
 	/var/lib/apt/lists/* \
 	/var/tmp/*
 
+COPY sources.list /etc/apt/
+
 ENTRYPOINT ["/init"]
